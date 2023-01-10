@@ -16,19 +16,19 @@
         </div>
     </header>
     <nav class="nav">
-        <a href="" class="nav__link--active">
+        <a href="{% url 'main' %}" class="nav__link">
             Главная страница
         </a>
-        <a href="" class="nav__link">
+        <a href="{% url 'demand' %}" class="nav__link">
             Востребованность
         </a>
-        <a href="" class="nav__link">
+        <a href="{% url 'geography' %}" class="nav__link">
             География
         </a>
-        <a href="" class="nav__link">
+        <a href="{% url 'skills' %}" class="nav__link">
             Навыки
         </a>
-        <a href="" class="nav__link">
+        <a href="{% url 'last_vacancies' %}" class="nav__link--active">
             Последние вакансии
         </a>
     </nav>
