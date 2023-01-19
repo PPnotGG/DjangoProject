@@ -84,7 +84,20 @@ li {
 
 .main__image {
     max-width: 300px;
-    position: relative;
+    float: left;
+    margin: 0 20px 15px 0;
+}
+
+.main__tables {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.main__graph {
+    width: 40%;
+    height: 40%;
+    margin: 10px;
 }
 
 .footer {

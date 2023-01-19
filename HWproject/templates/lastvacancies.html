@@ -6,45 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'css/normalize.css' %}" rel="stylesheet">
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <title>Последние вакансии</title>
 </head>
 <body>
+{% for nav in navigation %}
     <header class="header">
         <div class="header__logo">
-            C/C++
+            <img class="header__logo-img" src="{{ nav.logo_field.url }}">
         </div>
     </header>
     <nav class="nav">
         <a href="{% url 'main' %}" class="nav__link">
-            Главная страница
+            {{ nav.first_menu }}
         </a>
         <a href="{% url 'demand' %}" class="nav__link">
-            Востребованность
+            {{ nav.second_menu }}
         </a>
         <a href="{% url 'geography' %}" class="nav__link">
-            География
+            {{ nav.third_menu }}
         </a>
         <a href="{% url 'skills' %}" class="nav__link">
-            Навыки
+            {{ nav.fourth_menu }}
         </a>
         <a href="{% url 'last_vacancies' %}" class="nav__link--active">
-            Последние вакансии
+            {{ nav.fifth_menu }}
         </a>
     </nav>
+{% endfor %}
     <section class="main">
+    {% for nav in navigation %}
         <h1 class="main__article">
-            Последние вакансии
+            {{ nav.fifth_menu }}
         </h1>
-        
+    {% endfor %}
+{% for lv in last_vacancies %}
+        <div class="LVtable">
+        {% for i in vacs %}
+            <h3>{{ i.name }}</h3>
+            <p>Описание: {{ i.description }}</p>
+            <p>Навыки: {{ i.key_skills }}</p>
+            <p>Компания: {{ i.employer }}</p>
+            <p>Зарплата: {{ i.salary }}</p>
+            <p>Город: {{ i.area }}</p>
+            <p>Дата публикации: {{ i.published_at }}</p>
+            <p>Ссылка: {{ i.alternate_url }}</p>
+        {% endfor %}
+        </div>
+{% endfor %}
     </section>
+{% for nav in navigation %}
     <footer class="footer">
         <p class="footer__info">
-            Власов Алексей Александрович АТ-14 РИ-210942
+            {{ nav.author }}
         </p>
-        <a href="https://github.com/PPnotGG" class="footer__link">
-            https://github.com/PPnotGG
-        </a>
     </footer>
+{% endfor %}
 </body>
 </html>

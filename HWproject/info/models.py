@@ -1,37 +1,42 @@
 from django.db import models
 
 
+class Navigation(models.Model):
+    logo_field = models.ImageField(upload_to='media/', blank=False, verbose_name='Логотип')
+    first_menu = models.TextField(blank=False, verbose_name='Первый пункт меню', max_length=50)
+    second_menu = models.TextField(blank=False, verbose_name='Второй пункт меню', max_length=50)
+    third_menu = models.TextField(blank=False, verbose_name='Третий пункт меню', max_length=50)
+    fourth_menu = models.TextField(blank=False, verbose_name='Четвертый пункт меню',max_length=50)
+    fifth_menu = models.TextField(blank=False, verbose_name='Пятый пункт меню', max_length=50)
+    author = models.TextField(blank=False, verbose_name='Автор', max_length=50)
+
+
 class Description(models.Model):
-    header = models.CharField(max_length=255)
-    text = models.CharField(max_length=2048)
-    image = models.ImageField(upload_to='info/static/img', height_field=None, width_field=None, max_length=100, default='')
-    IMAGE_CHOICES = [
-        ('Y', 'Yes'),
-        ('N', 'No')
-    ]
-    check_image = models.CharField(choices=IMAGE_CHOICES, max_length=255, default='')
+    header = models.CharField(max_length=200)
+    text = models.TextField(blank=True, verbose_name='Описание')
+    image = models.ImageField(upload_to='media/', blank=False, verbose_name='Фото')
 
 
 class DemandGraph(models.Model):
-    header = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='info/static/img', height_field=None, width_field=None, max_length=100, default='')
+    content = models.TextField(blank=True, verbose_name='Таблицы')
+    graph1 = models.ImageField(upload_to='media/', blank=False, verbose_name='Первый график сравнения')
+    graph2 = models.ImageField(upload_to='media/', blank=False, verbose_name='Второй график сравнения')
 
 
 class GeographyGraph(models.Model):
-    header = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='info/static/img', height_field=None, width_field=None, max_length=100, default='')
+    content = models.TextField(blank=True, verbose_name='Таблицы')
+    first_header = models.CharField(max_length=100, blank=True, verbose_name='Заголовок для первого фото')
+    graph1 = models.ImageField(upload_to='media/', blank=False, verbose_name='Первый график')
+    second_header = models.CharField(max_length=100, blank=True, verbose_name='Заголовок для второго фото')
+    graph2 = models.ImageField(upload_to='media/', blank=False, verbose_name='Второй график')
 
 
 class SkillsGraph(models.Model):
-    header = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='info/static/img', height_field=None, width_field=None, max_length=100, default='')
+    header = models.CharField(max_length=100, blank=True, verbose_name='Заголовок для таблицы')
+    content = models.TextField(blank=True, verbose_name='Таблица')
+    graph = models.ImageField(upload_to='media/', blank=False, verbose_name='График')
 
 
 class LastVacancy(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
-    skills = models.CharField(max_length=255)
-    company = models.CharField(max_length=255)
-    salary = models.IntegerField()
-    region = models.CharField(max_length=255)
-    date = models.DateField()
+    header = models.CharField(max_length=100, verbose_name='Заголовок')
+    content = models.TextField(blank=True, verbose_name='Контент')
