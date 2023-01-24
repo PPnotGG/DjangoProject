@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'css/normalize.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <title>Последние вакансии</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <title>Главная</title>
 </head>
 <body>
 {% for nav in navigation %}
@@ -17,7 +17,7 @@
         </div>
     </header>
     <nav class="nav">
-        <a href="{% url 'main' %}" class="nav__link">
+        <a href="{% url 'main' %}" class="nav__link--active">
             {{ nav.first_menu }}
         </a>
         <a href="{% url 'demand' %}" class="nav__link">
@@ -29,7 +29,7 @@
         <a href="{% url 'skills' %}" class="nav__link">
             {{ nav.fourth_menu }}
         </a>
-        <a href="{% url 'last_vacancies' %}" class="nav__link--active">
+        <a href="{% url 'last_vacancies' %}" class="nav__link">
             {{ nav.fifth_menu }}
         </a>
     </nav>
@@ -37,23 +37,16 @@
     <section class="main">
     {% for nav in navigation %}
         <h1 class="main__article">
-            {{ nav.fifth_menu }}
+            {{ nav.first_menu }}
         </h1>
     {% endfor %}
-{% for lv in last_vacancies %}
-        <div class="LVtable">
-        {% for i in vacs %}
-            <h3>{{ i.name }}</h3>
-            <p>Описание: {{ i.description }}</p>
-            <p>Навыки: {{ i.key_skills }}</p>
-            <p>Компания: {{ i.employer }}</p>
-            <p>Зарплата: {{ i.salary }}</p>
-            <p>Город: {{ i.area }}</p>
-            <p>Дата публикации: {{ i.published_at }}</p>
-            <p>Ссылка: {{ i.alternate_url }}</p>
-        {% endfor %}
-        </div>
-{% endfor %}
+    {% for text in main_info %}
+        <h2>{{ text.header }}</h2>
+        <p>
+            <img src="{{ text.image.url }}" alt="" class="main__image">
+            {{ text.text|safe }}
+        </p>
+    {% endfor %}
     </section>
 {% for nav in navigation %}
     <footer class="footer">

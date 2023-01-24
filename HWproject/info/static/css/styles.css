@@ -15,6 +15,10 @@ li {
     list-style-type: none;
 }
 
+body, html {
+    height: 100%;
+}
+
 .header {
     padding: 20px 50px;
     background-color: var(--color-blue);
@@ -32,13 +36,13 @@ li {
     flex-direction: column;
     justify-content: space-between;
     height: 61%;
-    width: 200px; 
-    position: fixed; 
-    z-index: 1; 
-    top: 100; 
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 100;
     left: 0;
-    background-color: var(--color-blue); 
-    overflow-x: hidden; 
+    background-color: var(--color-blue);
+    overflow-x: hidden;
     padding: 20px 0;
     font-family: sans-serif;
 }
@@ -72,8 +76,9 @@ li {
 }
 
 .main {
+    box-sizing: border-box;
     padding: 40px 50px 40px 250px;
-    min-height: 600px;
+    min-height: 100%;
     font-family: sans-serif;
     font-weight: 400;
 }
